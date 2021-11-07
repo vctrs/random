@@ -24,16 +24,19 @@
 
 
       <a-marker type='barcode' value='1'>
-            <a-box position='0 0 0' color="yellow"></a-box>
+            <a-box position='0 0 0' color="yellow">
+         <a-text
+                look-at="[camera]"
+                scale="50 50 50"
+                position = "0 0 0"
+                value= "box"  
+            ></a-text>
+      
+        </a-box>
        </a-marker>
  
 
-      <a-text
-                look-at="[camera]"
-                scale="50 50 50"
-                
-                value= "box"  
-            ></a-text>
+ 
       
       <a-entity camera></a-entity>
     </a-scene>
