@@ -8,6 +8,8 @@
   
   <script>
     
+    function myFunction() {
+    
     if (window.DeviceOrientationEvent) {
     window.addEventListener('deviceorientation', deviceOrientationHandler, false);
     document.getElementById("text1").innerText = "Supported!";
@@ -16,6 +18,8 @@
       document.getElementById("text1").innerText = "not supported!";
     }
   document.getElementById("text1").innerText = "yo!";
+      
+    }
   </script>
  
 
