@@ -6,21 +6,7 @@
   
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   
-  <script>
-    
-    function myFunction() {
-    
-    if (window.DeviceOrientationEvent) {
-    window.addEventListener('deviceorientation', deviceOrientationHandler, false);
-    document.getElementById("text1").innerText = "Supported!";
-  }
-    else {
-      document.getElementById("text1").innerText = "not supported!";
-    }
-  document.getElementById("text1").innerText = "yo!";
-      
-    }
-  </script>
+ 
  
 
   <style>
@@ -54,6 +40,20 @@
       
       <a-entity camera></a-entity>
     </a-scene>
-
+ <script>
+    
+    function myFunction() {
+    
+    if (window.DeviceOrientationEvent) {
+    window.addEventListener('deviceorientation', deviceOrientationHandler, false);
+    document.getElementById("text1").innerText = "Supported!";
+  }
+    else {
+      document.getElementById("text1").innerText = "not supported!";
+    }
+  document.getElementById("text1").innerText = "yo!";
+      
+    }
+  </script>
   </body>
 </html>
