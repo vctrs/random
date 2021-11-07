@@ -39,15 +39,11 @@
     
     <button class = "button" id="bttn">YOUR BUTTON</button>
     
-    <script> 
-      
-      
-    document.getElementById("bttn").addEventlistener('click', function () {
-
-        document.getElementById("bttn").textContent = "yo";
-
- });
-    </script>
+<script>
+document.getElementById("bttn").addEventListener("click", function() {
+  document.getElementById("bttn").innerHTML = "Hello World";
+});
+</script>
     
     
     
@@ -67,17 +63,6 @@
       
       <a-entity camera></a-entity>
     </a-scene>
- <script>
 
- <!-- if (true) { -->
-    <!-- window.addEventListener('deviceorientation', deviceOrientationHandler, false); -->
-<!--    document.getElementById("text1").innerHTML = "Supported!"; -->
-<!--   } -->
-<!--  else { -->
-<!--    document.getElementById("text1").innerHTML = "not supported!";  -->
-<!--  }   -->
-     
-
-  </script> 
   </body>
 </html>
