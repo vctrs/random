@@ -42,8 +42,14 @@
     </a-scene>
  <script>
 
- 
-    document.getElementById("text1").innerHTML = "fffff!";  
+  if (window.DeviceOrientationEvent) {
+    window.addEventListener('deviceorientation', deviceOrientationHandler, false);
+    document.getElementById("text1").innerText = "Supported!";
+   }
+  else {
+    document.getElementById("text1").innerHTML = "not supported!"; 
+    {
+     
 
   </script>
   </body>
