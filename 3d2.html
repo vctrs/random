@@ -18,11 +18,42 @@
     text-align: center;
      color: red;
     }
+    
+    .button {
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  top: calc(50% - 300px);
+  left: calc(50% - 50px);
+  background-color: magenta;
+  z-index: 9999;
+  line-height: 100px;
+  text-align: center;
+  color: white;
+}
   
   </style>
 
  
   <body style="margin : 0px; overflow: hidden;">
+    
+    <button id="bttn">YOUR BUTTON</button>
+    
+    <script> 
+      
+      
+    document.getElementById("bttn").addEventlistener('click', function () {
+    DeviceMotionEvent.requestPermission().then(response => {
+      if (response == 'granted') {
+        window.addEventListener('devicemotion', (e) => {
+        document.getElementById("bttn").innerHTML = "yo";
+      })
+    }
+  }).catch(console.error)
+ });
+    </script>
+    
+    
     
   <!--  <p   class="text_over" id = "text1" > --   </p> -->
 
