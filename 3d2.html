@@ -26,7 +26,7 @@
       <a-marker type='barcode' value='1'>
             <a-box position='0 0 0' color="yellow">
          <a-text
-                look-at="[camera]"
+                look-at="#cam"
                 scale="5 5 5"
                 position = "0 0 0"
                 value= "box"  
@@ -38,7 +38,7 @@
 
  
       
-      <a-entity camera></a-entity>
+      <a-entity id="cam" camera></a-entity>
     </a-scene>
 
   </body>
