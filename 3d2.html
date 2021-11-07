@@ -41,18 +41,9 @@
       <a-entity camera></a-entity>
     </a-scene>
  <script>
-    
-   
-    
-    if (window.DeviceOrientationEvent) {
-    window.addEventListener('deviceorientation', deviceOrientationHandler, false);
-    document.getElementById("text1").innerText = "Supported!";
-  }
-    else {
-      document.getElementById("text1").innerText = "not supported!";
-    }
+
  
-    document.getElementById("text1").innerText = "fffff!";  
+    document.getElementById("text1").innerHTML = "fffff!";  
 
   </script>
   </body>
