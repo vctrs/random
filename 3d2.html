@@ -43,13 +43,9 @@
       
       
     document.getElementById("bttn").addEventlistener('click', function () {
-    DeviceMotionEvent.requestPermission().then(response => {
-      if (response == 'granted') {
-        window.addEventListener('devicemotion', (e) => {
+
         document.getElementById("bttn").innerHTML = "yo";
-      })
-    }
-  }).catch(console.error)
+
  });
     </script>
     
