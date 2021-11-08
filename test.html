@@ -13,6 +13,10 @@ function permission () {
                 window.addEventListener( "devicemotion", (e) => {
                     document.getElementById("accel").innerHTML =  e.acceleration.x + " "+e.acceleration.y + " "+e.acceleration.z + " "+  e.rotationRate.alpha + " "+e.rotationRate.beta + " "+e.rotationRate.gamma + " "+ e.interval;
                 })
+             
+             window.addEventListener( "deviceorientation", (e) => {
+                    document.getElementById("gyro").innerHTML =  e.alpha + " "+e.beta + " "+ e.gamma;
+                })
             }
         })
             .catch( console.error )
