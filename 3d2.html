@@ -44,7 +44,7 @@
         marker1.object3D.getWorldPosition(marker1Pos);
           
           
-      <!--  document.getElementById("text_over").innerHTML=marker1Pos; -->
+       document.getElementById("text_over").innerHTML=Math.sqrt( marker1Pos.x**2+marker1Pos.y**2+marker1Pos.z**2); 
       
         console.log("distance " + marker1Pos.x+ " " + marker1Pos.y + " " + marker1Pos.z+" "+Math.sqrt( marker1Pos.x**2+marker1Pos.y**2+marker1Pos.z**2))
 
