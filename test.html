@@ -1,1 +1,48 @@
 
+ <!DOCTYPE html>
+<html>
+  
+  
+<script >
+  
+function permission () {
+    if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) 
+    {
+        // (optional) Do something before API request prompt.
+        DeviceMotionEvent.requestPermission().then( response => 
+         {
+          
+            // (optional) Do something after API prompt dismissed.
+            if ( response == "granted" ) {
+              
+                window.addEventListener( "deviceorientation", function(event) => 
+                {                       
+                  document.getElementById("gyro").innerHTML =   (event.alpha, event.beta, event.gamma);              
+                });
+          
+                window.addEventListener( "devicemotion", function(event) => 
+                {
+                  document.getElementById("accel").innerHTML =   (event.accelerationa, event.rotationRate, event.interval);
+                });
+            })
+            .catch( console.error )
+    } else {
+        alert( "DeviceMotionEvent is not defined" );
+    }
+}
+
+</script>
+
+ 
+<body>
+<button onclick='permission();'>Request orientation permission</button> 
+
+<p id = "accel">accelerometer</p>
+<p id = "gyro">gyro</p>
+
+  
+  
+  
+  
+</body>
+</html> 
