@@ -11,7 +11,7 @@ function permission () {
             // (optional) Do something after API prompt dismissed.
             if ( response == "granted" ) {
                 window.addEventListener( "devicemotion", (e) => {
-                    document.getElementById("accel").innerHTML =  e.acceleration + " "+  e.rotationRate + " "+ e.interval;
+                    document.getElementById("accel").innerHTML =  e.acceleration.x + " "+e.acceleration.y + " "+e.acceleration.z + " "+  e.rotationRate.alpha + " "+e.rotationRate.beta + " "+e.rotationRate.gamma + " "+ e.interval;
                 })
             }
         })
