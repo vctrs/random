@@ -2,32 +2,81 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Hello OpenCV.js</title>
+
 </head>
+  
+  <style>
+    video {
+          width: 100%    !important;
+          height: auto   !important;
+           }
+  </style>
 <body>
-<h2>Hello OpenCV.js</h2>
+  
+
 <p id="status">OpenCV.js is loading...</p>
+<video id = "videoInput"  >
+
+</video> 
 <div>
-  <div class="inputoutput">
-    <img id="imageSrc" alt="No Image" />
-    <div class="caption">imageSrc <input type="file" id="fileInput" name="file" /></div>
+ <div class="inputoutput">
+    <canvas id="canvasInput" ></canvas>
+    <div class="caption">canvasOutput</div>
   </div>
   <div class="inputoutput">
     <canvas id="canvasOutput" ></canvas>
     <div class="caption">canvasOutput</div>
   </div>
 </div>
+  
+  
+  
 <script type="text/javascript">
-let imgElement = document.getElementById('imageSrc');
-let inputElement = document.getElementById('fileInput');
-inputElement.addEventListener('change', (e) => {
-  imgElement.src = URL.createObjectURL(e.target.files[0]);
-}, false);
-imgElement.onload = function() {
-  let mat = cv.imread(imgElement);
-  cv.imshow('canvasOutput', mat);
-  mat.delete();
+  
+  
+let video = document.getElementById("videoInput"); // video is the id of video tag
+let FPS = 30;
+  
+navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+    .then(function(stream) {
+        video.srcObject = stream;
+        video.play();
+        FPS = stream.getVideoTracks()[0].getSettings().frameRate;
+    })
+    .catch(function(err) {
+        console.log("An error occurred! " + err);
+    });
+  
+let video = document.getElementById('videoInput');
+let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
+let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1);
+let cap = new cv.VideoCapture(video);
+
+// const FPS = 30;
+function processVideo() {
+    try {
+        if (!streaming) {
+            // clean and stop.
+            src.delete();
+            dst.delete();
+            return;
+        }
+        let begin = Date.now();
+        // start processing.
+        cap.read(src);
+        cv.cvtColor(src, dst, cv.COLOR_RGBA2GRAY);
+        cv.imshow('canvasOutput', dst);
+        // schedule the next one.
+        let delay = 1000/FPS - (Date.now() - begin);
+        setTimeout(processVideo, delay);
+    } catch (err) {
+        utils.printError(err);
+    }
 };
+
+// schedule the first one.
+setTimeout(processVideo, 0);
+  
 function onOpenCvReady() {
   document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
 }
