@@ -35,11 +35,6 @@ function permission () {
   maximumAge: 0
 };
 
-function log(data) {
-  const tag = document.createElement('p');
-  tag.textContent = data;
-  document.body.appendChild(tag);
-}
 
 function success(pos) {
   var crd = pos.coords;
@@ -50,6 +45,7 @@ function success(pos) {
 }
 
 function error(err) {
+ document.getElementById("loc").innerHTML =  `ERROR(${err.code}): ${err.message};
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
