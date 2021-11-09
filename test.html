@@ -26,6 +26,35 @@ function permission () {
 }
 
 </script>
+ 
+ <script>
+  
+  var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0
+};
+
+function log(data) {
+  const tag = document.createElement('p');
+  tag.textContent = data;
+  document.body.appendChild(tag);
+}
+
+function success(pos) {
+  var crd = pos.coords;
+  console.log('Successfully determined a user position:', crd);
+ 
+   document.getElementById("loc").innerHTML =  crd.latitude + " "+crd.longitude+ " "+ crd.accuracy;
+
+}
+
+function error(err) {
+  console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+ </script>
 
  
 <body>
@@ -33,6 +62,7 @@ function permission () {
 
 <p id = "accel">accelerometer</p>
 <p id = "gyro">gyro</p>
+<p id = "loc">location</p>
 
   
   
