@@ -5,23 +5,23 @@
 
 </head>
   
-  <style>
-    video {
-          width: 100%    !important;
-          height: auto   !important;
-           }
-  </style>
+//  <style>
+ //   video {
+//          width: 100%    !important;
+//          height: auto   !important;
+//           }
+//  </style>
 <body>
   
 
 <p id="status">OpenCV.js is loading...</p>
-<video id = "videoInput"  >
+<video id = "videoInput" width="320" height="240" >
 
 </video> 
 <div>
  <div class="inputoutput">
     <canvas id="canvasInput" ></canvas>
-    <div class="caption">canvasOutput</div>
+    <div class="caption">canvasInput</div>
   </div>
   <div class="inputoutput">
     <canvas id="canvasOutput" ></canvas>
@@ -41,7 +41,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: false })
     .then(function(stream) {
         video.srcObject = stream;
         video.play();
-        FPS = stream.getVideoTracks()[0].getSettings().frameRate;
+       // FPS = stream.getVideoTracks()[0].getSettings().frameRate;
     })
     .catch(function(err) {
         console.log("An error occurred! " + err);
