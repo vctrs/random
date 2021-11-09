@@ -45,7 +45,7 @@ function success(pos) {
 }
 
 function error(err) {
- document.getElementById("loc").innerHTML =  ERROR(${err.code}): ${err.message};
+ document.getElementById("loc").innerHTML = err.code + "  "+ err.message;
   console.warn(`ERROR(${err.code}): ${err.message}`);
 }
 
