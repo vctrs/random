@@ -72,7 +72,7 @@ function onVideoStarted() {
     startAndStop.innerText = 'Stop';
     video.width = video.videoWidth;
     video.height = video.videoHeight;
-    
+    plaaaay();
 }
 
 function onVideoStopped() {
@@ -81,15 +81,13 @@ function onVideoStopped() {
     startAndStop.innerText = 'Start';
 }
     
-utils.loadOpenCv(() => {
-    startAndStop.removeAttribute('disabled');
 
-    
 
-    
+ function plaaaay() {   
 let src = new cv.Mat(video.height, video.width, cv.CV_8UC4);
 let dst = new cv.Mat(video.height, video.width, cv.CV_8UC1);
 let cap = new cv.VideoCapture(video);
+   
 
 const FPS = 30;
 function processVideo() {
@@ -115,8 +113,12 @@ function processVideo() {
 
 // schedule the first one.
 setTimeout(processVideo, 0);
+ }
 
-});
+utils.loadOpenCv(() => {
+    startAndStop.removeAttribute('disabled');
+});     
+    
 </script>
 </body>
 </html>
