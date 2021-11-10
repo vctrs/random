@@ -30,6 +30,9 @@
 <script type="text/javascript">
   
 function onOpenCvReady() {
+  
+  cv['onRuntimeInitialized']=()=>{
+    
   document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
   
 let video = document.getElementById("videoInput"); // video is the id of video tag
@@ -75,7 +78,7 @@ function processVideo() {
 // schedule the first one.
 setTimeout(processVideo, 0);
   
-
+};
 }
 </script>
 <script async src="opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
