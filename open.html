@@ -25,7 +25,7 @@
   </div>
 </div>
   
-  
+  <script  src="opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
   
 <script type="text/javascript">
   
@@ -34,6 +34,8 @@ function onOpenCvReady() {
   
     
   document.getElementById('status').innerHTML = 'OpenCV.js is ready.';
+  
+  };
   
 let video = document.getElementById("videoInput"); // video is the id of video tag
 let FPS = 30;
@@ -79,8 +81,8 @@ function processVideo() {
 setTimeout(processVideo, 0);
   
 
-}
+
 </script>
-<script  src="opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+
 </body>
 </html>
