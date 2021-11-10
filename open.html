@@ -48,6 +48,36 @@
 <script type="text/javascript">
     
 let utils = new Utils('errorMessage');
+ 
+let streaming = false;
+
+let startAndStop = document.getElementById('startAndStop');
+let canvasOutput = document.getElementById('canvasOutput');
+let canvasContext = canvasOutput.getContext('2d');
+
+startAndStop.addEventListener('click', () => {
+    if (!streaming) {
+        utils.clearError();
+        utils.startCamera('qvga', onVideoStarted, 'videoInput');
+    } else {
+        utils.stopCamera();
+        onVideoStopped();
+    }
+});
+
+function onVideoStarted() {
+    streaming = true;
+    startAndStop.innerText = 'Stop';
+    video.width = video.videoWidth;
+    video.height = video.videoHeight;
+    utils.executeCode('codeEditor');
+}
+
+function onVideoStopped() {
+    streaming = false;
+    canvasContext.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
+    startAndStop.innerText = 'Start';
+}
     
 utils.loadOpenCv(() => {
     startAndStop.removeAttribute('disabled');
@@ -83,40 +113,6 @@ function processVideo() {
 
 // schedule the first one.
 setTimeout(processVideo, 0);
-
-
-
-
-
-let streaming = false;
-
-let startAndStop = document.getElementById('startAndStop');
-let canvasOutput = document.getElementById('canvasOutput');
-let canvasContext = canvasOutput.getContext('2d');
-
-startAndStop.addEventListener('click', () => {
-    if (!streaming) {
-        utils.clearError();
-        utils.startCamera('qvga', onVideoStarted, 'videoInput');
-    } else {
-        utils.stopCamera();
-        onVideoStopped();
-    }
-});
-
-function onVideoStarted() {
-    streaming = true;
-    startAndStop.innerText = 'Stop';
-    video.width = video.videoWidth;
-    video.height = video.videoHeight;
-    utils.executeCode('codeEditor');
-}
-
-function onVideoStopped() {
-    streaming = false;
-    canvasContext.clearRect(0, 0, canvasOutput.width, canvasOutput.height);
-    startAndStop.innerText = 'Start';
-}
 
 });
 </script>
