@@ -130,37 +130,7 @@ let err = new cv.Mat();
     
     
 const FPS = 30;
-function processVideo() {
-    try {
-        if (!streaming) {
-            // clean and stop.
-            src.delete();
-            dst.delete();
-            return;
-        }
-        let begin = Date.now();
-        // start processing.
-        
-        
-        cap.read(frame);
-        
-        
-        cv.cvtColor(frame, dst, cv.COLOR_RGBA2GRAY);
-        
-        
-        
-        cv.imshow('canvasOutput', dst);
-        
-        
-        
-        // schedule the next one.
-        let delay = 1000/FPS - (Date.now() - begin);
-        setTimeout(processVideo, delay);
-    } catch (err) {
-        utils.printError(err);
-    }
-};
-    
+
 function processVideo_opt_flow() {
     try {
         if (!streaming) {
@@ -211,9 +181,15 @@ function processVideo_opt_flow() {
         }
 
         // schedule the next one.
-        let delay = 1000/FPS - (Date.now() - begin);
+         if ((1000/FPS - (Date.now() - begin))<=0) {
+             let delay = 0;
+         }
+        else {
+            let delay = if (1000/FPS - (Date.now() - begin))<0);
+        }
         setTimeout(processVideo, delay);
     } catch (err) {
+        console.log(err);
         utils.printError(err);
     }
 };
