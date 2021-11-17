@@ -181,12 +181,12 @@ function processVideo_opt_flow() {
         }
 
         // schedule the next one.
-         if ((1000/FPS - (Date.now() - begin))<=0) {
-             let delay = 0;
+        let delay = 1000/FPS - (Date.now() - begin);
+
+         if (delay<=0) {
+              delay = 0;
          }
-        else {
-            let delay = 1000/FPS - (Date.now() - begin);
-        }
+    
         setTimeout(processVideo_opt_flow, delay);
     } catch (err) {
         console.log(err);
