@@ -187,7 +187,7 @@ function processVideo_opt_flow() {
         else {
             let delay = 1000/FPS - (Date.now() - begin);
         }
-        setTimeout(processVideo, delay);
+        setTimeout(processVideo_opt_flow, delay);
     } catch (err) {
         console.log(err);
         utils.printError(err);
