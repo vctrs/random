@@ -180,7 +180,7 @@ function processVideo_opt_flow() {
         cv.cvtColor(frame, frameGray, cv.COLOR_RGBA2GRAY);
 
         // calculate optical flow
-        cv.calcOpticalFlowPyrLK(oldGray, frameGray, p0, p1, st, err, winSize, maxLevel, criteria);
+        console.log(cv.calcOpticalFlowPyrLK(oldGray, frameGray, p0, p1, st, err, winSize, maxLevel, criteria));
 
         // select good points
         let goodNew = [];
