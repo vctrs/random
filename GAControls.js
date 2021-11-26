@@ -184,7 +184,7 @@ class GAControls extends EventDispatcher {
 		};
 
 		this.update = function ( delta ) {
-
+/*
 			const moveMult = delta * scope.movementSpeed;
 			const rotMult = delta * scope.rollSpeed;
 
@@ -205,7 +205,7 @@ class GAControls extends EventDispatcher {
 				lastPosition.copy( scope.object.position );
 
 			}
-
+*/
 		};
 
 
