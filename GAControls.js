@@ -25,8 +25,8 @@ class GAControls extends EventDispatcher {
 
 		// API
 
-		this.movementSpeed = 1.0;
-		this.rollSpeed = 0.005;
+		this.movementSpeed = 0;// 1.0;
+		this.rollSpeed =0;// 0.005;
 
 		this.dragToLook = false;
 		this.autoForward = false;
