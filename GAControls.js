@@ -298,19 +298,19 @@ class GAControls extends EventDispatcher {
                            // scope.object.quaternion.multiply(quaternion); 
 			    if (typeof prev_alpha == 'undefined') {
 				    
-				scope.prev_alpha=e.alpha;
-				scope.prev_beta=e.beta;
-				scope.prev_gamma=e.gamma;
+				const prev_alpha=e.alpha;
+				const prev_beta=e.beta;
+				const prev_gamma=e.gamma;
 			    	
 			     	scope.object.setRotationFromEuler (new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' ) );
 					    // the variable is defined
 					}
 			    else {
 				    
-			    scope.object.setRotationFromEuler (new Euler(( e.beta-scope.prev_beta) * Math.PI/180, (e.alpha-scope.prev_alpha) * Math.PI/180, (e.gamma-scope.prev_gamma) * Math.PI/180, 'XYZ' ) );
-				scope.prev_alpha=e.alpha;
-				scope.prev_beta=e.beta;
-				scope.prev_gamma=e.gamma;    
+			    	scope.object.setRotationFromEuler (new Euler(( e.beta-prev_beta) * Math.PI/180, (e.alpha-prev_alpha) * Math.PI/180, (e.gamma-prev_gamma) * Math.PI/180, 'XYZ' ) );
+				prev_alpha=e.alpha;
+				prev_beta=e.beta;
+				prev_gamma=e.gamma;    
 			    }
 
                         //    scope.object.rotateOnAxis ( new Vector3( 1, 0, 0 ), e.beta * Math.PI/180);
