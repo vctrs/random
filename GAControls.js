@@ -185,6 +185,8 @@ class GAControls extends EventDispatcher {
 		};
 
 		this.update = function ( delta ) {
+			
+			
 /*
 			const moveMult = delta * scope.movementSpeed;
 			const rotMult = delta * scope.rollSpeed;
@@ -289,7 +291,9 @@ class GAControls extends EventDispatcher {
                     
                     window.addEventListener( "deviceorientation", (e) => {
                             document.getElementById("details").innerHTML = " gyro "+ e.alpha + " "+e.beta + " "+ e.gamma;
-				 scope.object.rotation.set(new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' ) ); 
+				const quaternion = new Quaternion();
+                            quaternion.setFromEuler (new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' ) );
+                            scope.object.quaternion.multiply(quaternion); 
 
 
                         //    scope.object.rotateOnAxis ( new Vector3( 1, 0, 0 ), e.beta * Math.PI/180);
