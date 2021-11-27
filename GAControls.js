@@ -289,7 +289,7 @@ class GAControls extends EventDispatcher {
                     
                     window.addEventListener( "deviceorientation", (e) => {
                             document.getElementById("details").innerHTML = " gyro "+ e.alpha + " "+e.beta + " "+ e.gamma;
-				 scope.object.quaternion.setRotationFromEuler (new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' ) ); 
+				 scope.object.quaternion.setFromEuler (new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' ) ); 
 
 
                         //    scope.object.rotateOnAxis ( new Vector3( 1, 0, 0 ), e.beta * Math.PI/180);
