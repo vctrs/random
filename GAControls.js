@@ -44,6 +44,8 @@ class GAControls extends EventDispatcher {
 		const lastPosition = new Vector3();
 
 		this.tmpQuaternion = new Quaternion();
+		
+		
 
 		this.mouseStatus = 0;
 
@@ -294,8 +296,22 @@ class GAControls extends EventDispatcher {
 			//	const quaternion = new Quaternion();
                          //   quaternion.setFromEuler (new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' ) );
                            // scope.object.quaternion.multiply(quaternion); 
-			    scope.object.rotation(new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' ) );
-
+			    if (typeof prev_alpha == 'undefined') {
+				    
+				scope.prev_alpha=e.alpha;
+				scope.prev_beta=e.beta;
+				scope.prev_gamma=e.gamma;
+			    	
+			     	scope.object.setRotationFromEuler (new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' ) );
+					    // the variable is defined
+					}
+			    else {
+				    
+			    scope.object.setRotationFromEuler (new Euler(( e.beta-scope.prev_beta) * Math.PI/180, (e.alpha-scope.prev_alpha) * Math.PI/180, (e.gamma-scope.prev_gamma) * Math.PI/180, 'XYZ' ) );
+				scope.prev_alpha=e.alpha;
+				scope.prev_beta=e.beta;
+				scope.prev_gamma=e.gamma;    
+			    }
 
                         //    scope.object.rotateOnAxis ( new Vector3( 1, 0, 0 ), e.beta * Math.PI/180);
                           //  scope.object.rotateOnAxis ( new Vector3( 0, 1, 0 ), e.alpha * Math.PI/180 );
