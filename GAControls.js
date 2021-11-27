@@ -1,7 +1,8 @@
 import {
 	EventDispatcher,
 	Quaternion,
-	Vector3
+	Vector3,
+	Euler
     
 } from './three.module.js';
 
@@ -288,10 +289,11 @@ class GAControls extends EventDispatcher {
                     
                     window.addEventListener( "deviceorientation", (e) => {
                             document.getElementById("details").innerHTML = " gyro "+ e.alpha + " "+e.beta + " "+ e.gamma;
-				
-                            scope.object.rotateOnAxis ( new Vector3( 1, 0, 0 ), e.beta * Math.PI/180);
-                            scope.object.rotateOnAxis ( new Vector3( 0, 1, 0 ), e.alpha * Math.PI/180 );
-                            scope.object.rotateOnAxis ( new Vector3( 0, 0, 1 ), e.gamma * Math.PI/180 ); 
+				 scope.object.rotation(new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' ) ); 
+
+                        //    scope.object.rotateOnAxis ( new Vector3( 1, 0, 0 ), e.beta * Math.PI/180);
+                          //  scope.object.rotateOnAxis ( new Vector3( 0, 1, 0 ), e.alpha * Math.PI/180 );
+                           // scope.object.rotateOnAxis ( new Vector3( 0, 0, 1 ), e.gamma * Math.PI/180 ); 
                         })
                     }
                 })
