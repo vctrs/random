@@ -296,18 +296,19 @@ class GAControls extends EventDispatcher {
 			//	const quaternion = new Quaternion();
                          //   quaternion.setFromEuler (new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' ) );
                            // scope.object.quaternion.multiply(quaternion); 
-			    if (typeof prev_alpha == 'undefined') {
+			    if (typeof temp_euler == 'undefined') {
 				    
-				const prev_alpha=e.alpha;
-				const prev_beta=e.beta;
-				const prev_gamma=e.gamma;
+				var prev_alpha=e.alpha;
+				var prev_beta=e.beta;
+				var prev_gamma=e.gamma;
+			    	var temp_euler = new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' );
 			    	
-			     	scope.object.setRotationFromEuler (new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' ) );
+			     	scope.object.setRotationFromEuler (temp_euler );
 					    // the variable is defined
 					}
 			    else {
-				    
-			    	scope.object.setRotationFromEuler (new Euler(( e.beta-prev_beta) * Math.PI/180, (e.alpha-prev_alpha) * Math.PI/180, (e.gamma-prev_gamma) * Math.PI/180, 'XYZ' ) );
+			    	temp_euler =  Euler(( e.beta-prev_beta) * Math.PI/180, (e.alpha-prev_alpha) * Math.PI/180, (e.gamma-prev_gamma) * Math.PI/180, 'XYZ' );
+			    	scope.object.setRotationFromEuler (temp_euler  );
 				prev_alpha=e.alpha;
 				prev_beta=e.beta;
 				prev_gamma=e.gamma;    
