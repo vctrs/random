@@ -301,13 +301,13 @@ class GAControls extends EventDispatcher {
 				var prev_alpha=e.alpha;
 				var prev_beta=e.beta;
 				var prev_gamma=e.gamma;
-			    	var temp_euler = new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' );
+			    	var temp_euler = new Euler( e.beta * Math.PI/180, e.gamma * Math.PI/180, e.alpha * Math.PI/180, 'XYZ' );
 			    	
 			     	scope.object.setRotationFromEuler (temp_euler );
 					    // the variable is defined
 					}
 			    else {
-			    	temp_euler =  Euler(( e.beta-prev_beta) * Math.PI/180, (e.alpha-prev_alpha) * Math.PI/180, (e.gamma-prev_gamma) * Math.PI/180, 'XYZ' );
+			    	temp_euler.set(( e.beta-prev_beta) * Math.PI/180, (e.gamma-prev_gamma) * Math.PI/180, (e.alpha-prev_alpha) * Math.PI/180, 'XYZ' );
 			    	scope.object.setRotationFromEuler (temp_euler  );
 				prev_alpha=e.alpha;
 				prev_beta=e.beta;
