@@ -283,7 +283,7 @@ class GAControls extends EventDispatcher {
 
                     if ( response == "granted" ) {
                         document.getElementById("permission_button").style.display = 'none';
-
+/*
                         window.addEventListener( "devicemotion", (e) => {
                             
                          //   	document.getElementById("details").innerHTML =  "acc " + e.acceleration.x + " "+e.acceleration.y + " "+e.acceleration.z + " "+  e.rotationRate.alpha + " "+e.rotationRate.beta + " "+e.rotationRate.gamma + " "+ e.interval;
@@ -320,7 +320,7 @@ class GAControls extends EventDispatcher {
 				// m/s^2
 			}) 
                         
-                    
+              */      
                     
                     window.addEventListener( "deviceorientation", (e) => {
                             document.getElementById("details").innerHTML = " gyro "+ e.alpha + " "+e.beta + " "+ e.gamma;
