@@ -308,9 +308,9 @@ class GAControls extends EventDispatcher {
 					scope.object.translateY(v_prev_y*e.interval + e.acceleration.y * e.interval ** 2 /2);
 					scope.object.translateZ(v_prev_z*e.interval + e.acceleration.z * e.interval ** 2 /2);
 					
-					var v_prev_x += e.interval*e.acceleration.x;
-					var v_prev_y += e.interval*e.acceleration.y;
-					var v_prev_z += e.interval*e.acceleration.z;
+					v_prev_x += e.interval*e.acceleration.x;
+					v_prev_y += e.interval*e.acceleration.y;
+					v_prev_z += e.interval*e.acceleration.z;
 				
 				}
 				
