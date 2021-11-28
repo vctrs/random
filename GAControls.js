@@ -284,18 +284,47 @@ class GAControls extends EventDispatcher {
                     if ( response == "granted" ) {
                         document.getElementById("permission_button").style.display = 'none';
 
-                     /*   window.addEventListener( "devicemotion", (e) => {
+                        window.addEventListener( "devicemotion", (e) => {
                             
-                            document.getElementById("details").innerHTML =  "acc " + e.acceleration.x + " "+e.acceleration.y + " "+e.acceleration.z + " "+  e.rotationRate.alpha + " "+e.rotationRate.beta + " "+e.rotationRate.gamma + " "+ e.interval;
-                        }) 
+                            	document.getElementById("details").innerHTML =  "acc " + e.acceleration.x + " "+e.acceleration.y + " "+e.acceleration.z + " "+  e.rotationRate.alpha + " "+e.rotationRate.beta + " "+e.rotationRate.gamma + " "+ e.interval;
+                        	
+				if (typeof v_prev_x == 'undefined') {
+					
+					var v_prev_x = e.interval*e.acceleration.x;
+					var v_prev_y = e.interval*e.acceleration.y;
+					var v_prev_z = e.interval*e.acceleration.z;
+					
+					scope.object.translateX(e.acceleration.x * e.interval ** 2 /2);
+					scope.object.translateY(e.acceleration.y * e.interval ** 2 /2);
+					scope.object.translateZ(e.acceleration.z * e.interval ** 2 /2);
+					
+				}
+				
+				else {
+					
+					
+					
+					scope.object.translateX(v_prev_x*e.interval + e.acceleration.x * e.interval ** 2 /2);
+					scope.object.translateY(v_prev_y*e.interval + e.acceleration.y * e.interval ** 2 /2);
+					scope.object.translateZ(v_prev_z*e.interval + e.acceleration.z * e.interval ** 2 /2);
+					
+					var v_prev_x += e.interval*e.acceleration.x;
+					var v_prev_y += e.interval*e.acceleration.y;
+					var v_prev_z += e.interval*e.acceleration.z;
+				
+				}
+				
+			
+				
+				//The values reported by the accelerometers are measured in increments of the gravitational acceleration, with the value 1.0 representing an acceleration of 9.8 meters per second (per second) in the given direction
+				// m/s^2
+			}) 
                         
-                    */
+                    
                     
                     window.addEventListener( "deviceorientation", (e) => {
                             document.getElementById("details").innerHTML = " gyro "+ e.alpha + " "+e.beta + " "+ e.gamma;
-			//	const quaternion = new Quaternion();
-                         //   quaternion.setFromEuler (new Euler( e.beta * Math.PI/180, e.alpha * Math.PI/180, e.gamma * Math.PI/180, 'XYZ' ) );
-                           // scope.object.quaternion.multiply(quaternion); 
+		
 			    if (typeof temp_euler == 'undefined') {
 				    
 				var prev_alpha=e.alpha;
@@ -314,9 +343,7 @@ class GAControls extends EventDispatcher {
 				prev_gamma=e.gamma;    
 			    }
 
-                        //    scope.object.rotateOnAxis ( new Vector3( 1, 0, 0 ), e.beta * Math.PI/180);
-                          //  scope.object.rotateOnAxis ( new Vector3( 0, 1, 0 ), e.alpha * Math.PI/180 );
-                           // scope.object.rotateOnAxis ( new Vector3( 0, 0, 1 ), e.gamma * Math.PI/180 ); 
+                   
                         })
                     }
                 })
