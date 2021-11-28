@@ -286,7 +286,7 @@ class GAControls extends EventDispatcher {
 
                         window.addEventListener( "devicemotion", (e) => {
                             
-                            	document.getElementById("details").innerHTML =  "acc " + e.acceleration.x + " "+e.acceleration.y + " "+e.acceleration.z + " "+  e.rotationRate.alpha + " "+e.rotationRate.beta + " "+e.rotationRate.gamma + " "+ e.interval;
+                         //   	document.getElementById("details").innerHTML =  "acc " + e.acceleration.x + " "+e.acceleration.y + " "+e.acceleration.z + " "+  e.rotationRate.alpha + " "+e.rotationRate.beta + " "+e.rotationRate.gamma + " "+ e.interval;
                         	
 				if (typeof v_prev_x == 'undefined') {
 					
