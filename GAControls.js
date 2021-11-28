@@ -283,10 +283,10 @@ class GAControls extends EventDispatcher {
 
                     if ( response == "granted" ) {
                         document.getElementById("permission_button").style.display = 'none';
-/*
+
                         window.addEventListener( "devicemotion", (e) => {
                             
-                         //   	document.getElementById("details").innerHTML =  "acc " + e.acceleration.x + " "+e.acceleration.y + " "+e.acceleration.z + " "+  e.rotationRate.alpha + " "+e.rotationRate.beta + " "+e.rotationRate.gamma + " "+ e.interval;
+                            	document.getElementById("details").innerHTML =  "acc " + e.acceleration.x + " "+e.acceleration.y + " "+e.acceleration.z + " "+  e.rotationRate.alpha + " "+e.rotationRate.beta + " "+e.rotationRate.gamma + " "+ e.interval;
                         	
 				if (typeof v_prev_x == 'undefined') {
 					
@@ -294,9 +294,9 @@ class GAControls extends EventDispatcher {
 					var v_prev_y = e.interval*e.acceleration.y;
 					var v_prev_z = e.interval*e.acceleration.z;
 					
-					scope.object.translateX(e.acceleration.x * e.interval ** 2 /2);
-					scope.object.translateY(e.acceleration.y * e.interval ** 2 /2);
-					scope.object.translateZ(e.acceleration.z * e.interval ** 2 /2);
+				//	scope.object.translateX(e.acceleration.x * e.interval ** 2 /2);
+				//	scope.object.translateY(e.acceleration.y * e.interval ** 2 /2);
+				//	scope.object.translateZ(e.acceleration.z * e.interval ** 2 /2);
 					
 				}
 				
@@ -304,9 +304,9 @@ class GAControls extends EventDispatcher {
 					
 					
 					
-					scope.object.translateX(v_prev_x*e.interval + e.acceleration.x * e.interval ** 2 /2);
-					scope.object.translateY(v_prev_y*e.interval + e.acceleration.y * e.interval ** 2 /2);
-					scope.object.translateZ(v_prev_z*e.interval + e.acceleration.z * e.interval ** 2 /2);
+				//	scope.object.translateX(v_prev_x*e.interval + e.acceleration.x * e.interval ** 2 /2);
+				//	scope.object.translateY(v_prev_y*e.interval + e.acceleration.y * e.interval ** 2 /2);
+				//	scope.object.translateZ(v_prev_z*e.interval + e.acceleration.z * e.interval ** 2 /2);
 					
 					v_prev_x += e.interval*e.acceleration.x;
 					v_prev_y += e.interval*e.acceleration.y;
@@ -320,10 +320,10 @@ class GAControls extends EventDispatcher {
 				// m/s^2
 			}) 
                         
-              */      
+                   
                     
                     window.addEventListener( "deviceorientation", (e) => {
-                            document.getElementById("details").innerHTML = " gyro "+ e.alpha + " "+e.beta + " "+ e.gamma;
+                     //       document.getElementById("details").innerHTML = " gyro "+ e.alpha + " "+e.beta + " "+ e.gamma;
 		
 			    if (typeof temp_euler == 'undefined') {
 				    
