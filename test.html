@@ -29,7 +29,7 @@ function permission () {
                  if (i>500) {
                  var filename = "readme.txt";
                  var blob = new Blob([text], {type:'text/plain'});
-                 var link = getElementById("down");
+                 var link = document.getElementById("down");
                  link.download = filename;
                  link.innerHTML = "Download File";
                  link.href = window.URL.createObjectURL(blob);
