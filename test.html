@@ -26,7 +26,7 @@ function permission () {
                  text+=e.acceleration.x + ";"+e.acceleration.y + ";"+e.acceleration.z + ";"+  e.rotationRate.alpha + ";"+e.rotationRate.beta + ";"+e.rotationRate.gamma + ";"+ e.interval + "\r\n";
                  i+=1
                  document.getElementById("i").innerHTML = i ;
-                 if (i>500) {
+                 if (i==500) {
                  var filename = "readme.txt";
                  var blob = new Blob([text], {type:'text/plain'});
                  var link = document.getElementById("down");
