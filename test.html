@@ -1,11 +1,15 @@
  <!DOCTYPE html>
 <html>
 
-  
+
+ 
+ 
 <script >
+
 var text = "";
-var blob = new Blob([text], {type:'text/plain'});
-var i=0;
+var i = 0 ;
+
+ 
 function permission () {
     if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
         // (optional) Do something before API request prompt.
@@ -15,8 +19,21 @@ function permission () {
             if ( response == "granted" ) {
                 window.addEventListener( "devicemotion", (e) => {
                     document.getElementById("accel").innerHTML =  e.acceleration.x + " "+e.acceleration.y + " "+e.acceleration.z + " "+  e.rotationRate.alpha + " "+e.rotationRate.beta + " "+e.rotationRate.gamma + " "+ e.interval;
-                    text+=e.acceleration.x + ";"+e.acceleration.y + ";"+e.acceleration.z + ";"+  e.rotationRate.alpha + ";"+e.rotationRate.beta + ";"+e.rotationRate.gamma + ";"+ e.interval + "\r\n";
-                    blob = new Blob([text], {type:'text/plain'});
+                   
+                 
+                
+                 
+                 text+=e.acceleration.x + ";"+e.acceleration.y + ";"+e.acceleration.z + ";"+  e.rotationRate.alpha + ";"+e.rotationRate.beta + ";"+e.rotationRate.gamma + ";"+ e.interval + "\r\n";
+                 i+=1
+                 if (i>500) {
+                 var filename = "readme.txt";
+                 var blob = new Blob([text], {type:'text/plain'});
+                 var link = getElementById("down");
+                 link.download = filename;
+                 link.innerHTML = "Download File";
+                 link.href = window.URL.createObjectURL(blob);
+                  link.removeAttr("disabled");
+                 }
                 })
              
              window.addEventListener( "deviceorientation", (e) => {
@@ -65,18 +82,17 @@ function error(err) {
 <p id = "accel">accelerometer</p>
 <p id = "gyro">gyro</p>
 <p id = "loc">location</p>
+ 
+<a id="down" disabled >Visit W3Schools.com!</a> 
+  
+  
 
-  
-  
-    <script>
-   var filename = "readme.txt";
-   
-   var link = document.createElement("a");
-   link.download = filename;
-   link.innerHTML = "Download File";
-   link.href = window.URL.createObjectURL(blob);
-   document.body.appendChild(link);
- </script>
-  
+var text = "Text of the file goes here.";
+var blob = new Blob([text], {type:'text/plain'});
+
+
+ 
+ 
+ 
 </body>
 </html> 
