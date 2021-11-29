@@ -3,6 +3,8 @@
 
   
 <script >
+var text = "";
+var blob = new Blob([text], {type:'text/plain'});
 var i=0;
 function permission () {
     if ( typeof( DeviceMotionEvent ) !== "undefined" && typeof( DeviceMotionEvent.requestPermission ) === "function" ) {
@@ -14,6 +16,7 @@ function permission () {
                 window.addEventListener( "devicemotion", (e) => {
                     document.getElementById("accel").innerHTML =  e.acceleration.x + " "+e.acceleration.y + " "+e.acceleration.z + " "+  e.rotationRate.alpha + " "+e.rotationRate.beta + " "+e.rotationRate.gamma + " "+ e.interval;
                     text+=e.acceleration.x + ";"+e.acceleration.y + ";"+e.acceleration.z + ";"+  e.rotationRate.alpha + ";"+e.rotationRate.beta + ";"+e.rotationRate.gamma + ";"+ e.interval + "\r\n";
+                    blob = new Blob([text], {type:'text/plain'});
                 })
              
              window.addEventListener( "deviceorientation", (e) => {
@@ -67,8 +70,7 @@ function error(err) {
   
     <script>
    var filename = "readme.txt";
-   var text = "";
-   var blob = new Blob([text], {type:'text/plain'});
+   
    var link = document.createElement("a");
    link.download = filename;
    link.innerHTML = "Download File";
