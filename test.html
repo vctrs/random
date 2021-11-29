@@ -1,15 +1,6 @@
  <!DOCTYPE html>
 <html>
-  <script>
-   var filename = "readme.txt";
-   var text = "";
-   var blob = new Blob([text], {type:'text/plain'});
-   var link = document.createElement("a");
-   link.download = filename;
-   link.innerHTML = "Download File";
-   link.href = window.URL.createObjectURL(blob);
-   document.body.appendChild(link);
- </script>
+
   
 <script >
 var i=0;
@@ -74,7 +65,16 @@ function error(err) {
 
   
   
-  
+    <script>
+   var filename = "readme.txt";
+   var text = "";
+   var blob = new Blob([text], {type:'text/plain'});
+   var link = document.createElement("a");
+   link.download = filename;
+   link.innerHTML = "Download File";
+   link.href = window.URL.createObjectURL(blob);
+   document.body.appendChild(link);
+ </script>
   
 </body>
 </html> 
