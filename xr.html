@@ -8,6 +8,12 @@
     window.onload = async function() {
       const errorDisplay = document.getElementById('errors');
       try {
+        // Request necessary permissions for WebXR
+        await Promise.all([
+          navigator.permissions.query({ name: 'xr' }),
+          navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+        ]);
+
         const session = await navigator.xr.requestSession('immersive-vr');
         const canvas = document.createElement('canvas');
         const gl = canvas.getContext('webgl', { xrCompatible: true });
