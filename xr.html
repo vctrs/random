@@ -1,38 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WebXR Example</title>
   <script>
     window.onload = async function() {
-      const session = await navigator.xr.requestSession('immersive-vr');
-      const canvas = document.createElement('canvas');
-      const gl = canvas.getContext('webgl', { xrCompatible: true });
+      const errorDisplay = document.getElementById('errors');
+      try {
+        const session = await navigator.xr.requestSession('immersive-vr');
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl', { xrCompatible: true });
 
-      session.updateRenderState({
-        baseLayer: new XRWebGLLayer(session, gl)
-      });
+        session.updateRenderState({
+          baseLayer: new XRWebGLLayer(session, gl)
+        });
 
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-      const geometry = new THREE.BoxGeometry();
-      const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
-      const cube = new THREE.Mesh(geometry, material);
-      scene.add(cube);
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
 
-      function animate() {
-        session.requestAnimationFrame(animate);
+        function animate() {
+          session.requestAnimationFrame(animate);
 
-        // Update cube rotation or position here if needed
+          // Update cube rotation or position here if needed
 
-        gl.bindFramebuffer(gl.FRAMEBUFFER, session.renderState.baseLayer.framebuffer);
-        renderer.render(scene, camera);
+          gl.bindFramebuffer(gl.FRAMEBUFFER, session.renderState.baseLayer.framebuffer);
+          renderer.render(scene, camera);
+        }
+
+        animate();
+      } catch (error) {
+        errorDisplay.textContent = `An error occurred: ${error.message}`;
+        console.error(error);
       }
-
-      animate();
     }
   </script>
 </head>
 <body style="margin: 0; overflow: hidden;">
+  <p id="errors" style="color: red;"></p>
 </body>
 </html>
