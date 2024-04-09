@@ -10,7 +10,7 @@
       try {
         // Request necessary permissions for WebXR
         await Promise.all([
-          navigator.permissions.query({ name: 'xr' }),
+          navigator.permissions.query({ name: 'xr-spatial-tracking' }),
           navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         ]);
 
